@@ -1,0 +1,23 @@
+# secrets
+.env
+*.env.local
+
+# docker volumes / local data (if bind-mounted)
+n8n_data/
+postgres_data/
+volumes/
+
+# n8n local files
+.n8n/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.toc
