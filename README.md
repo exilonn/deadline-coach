@@ -73,7 +73,8 @@ Then, in n8n:
 5. Publish the five workflows.
 
 > The live demo runs on n8n Cloud (same n8n version, 2.43.5) with Supabase as the database.
-> The Docker setup above is the self-hosted equivalent.
+> The Docker setup above is the self-hosted equivalent. Tested on 22 October 2026 from a fresh clone:
+> postgres healthy, project tables created, n8n `/healthz` 200, 5 workflows imported, still present after `down` / `up`.
 
 ## How to test
 
