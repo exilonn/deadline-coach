@@ -1,7 +1,7 @@
 \documentclass[10pt,a4paper]{article}
 
 % ---------- Packages ----------
-\usepackage[a4paper,margin=2cm,top=1.8cm,bottom=2cm]{geometry}
+\usepackage[a4paper,margin=1.9cm,top=1.6cm,bottom=1.8cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
@@ -34,7 +34,7 @@
 
 \color{ink}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{5pt}
+\setlength{\parskip}{4pt}
 \setlist{itemsep=2pt,topsep=3pt,leftmargin=1.4em}
 
 \titleformat{\section}{\large\bfseries\color{ink}}{\color{accent}\thesection}{0.6em}{}
@@ -84,6 +84,7 @@ reminds me before they are due, warns me when a teacher moves a date, and plans 
 \textbf{Channel} & Telegram bot & \textbf{Database} & Supabase (Postgres) \\
 \textbf{Sources} & Moodle calendar (iCal), Telegram & \textbf{AI} & OpenRouter, free models \\
 \textbf{Level} & \textbf{3} (5 workflows) & \textbf{Date} & October 2026 \\
+\textbf{Code} & \multicolumn{3}{l}{\href{https://github.com/exilonn/deadline-coach}{github.com/exilonn/deadline-coach} (workflows, Docker setup, README)} \\
 \end{tabularx}
 
 \vspace{2pt}
@@ -184,7 +185,7 @@ sub-workflow. The labels on the arrows show what travels between blocks.
 \end{tikzpicture}
 \end{center}
 
-{\footnotesize\color{muted}Both AI nodes (\emph{Extract deadline} and \emph{Plan my week}) also have an error output that replies `The AI is busy, try again'' (drawn in Figure 2 only).}
+{\footnotesize\color{muted}Both AI nodes (\emph{Extract deadline} and \emph{Plan my week}) also have an error output that replies ``The AI is busy, try again'' (drawn in Figure 2 only).}
 
 % ---------- Figure 2: /add ----------
 \subsection{The /add pipeline (inside Main)}
@@ -356,6 +357,8 @@ Error handling and retries & Retry on fail on the AI, HTTP and Telegram calls an
 
 \textbf{Level 3.} The system keeps state between runs (reminder flags, Moodle event IDs), detects duplicates and
 date changes, uses sub-workflows and an error workflow, and retries the calls most likely to fail.
+
+\textbf{Cut line} (decided before building). If time had run short, I would have dropped, in this order: \cmd{/plan}; then the 7/3/1 reminder tiers (keeping a single reminder 2 days before); then the automatic Moodle sync (keeping \cmd{/add} only). Never cut: \cmd{/add} with AI extraction, \cmd{/deadlines}, the daily reminder and the usage message. In the end nothing had to be cut.
 
 \begin{itemize}
   \item \textbf{AI provider:} OpenRouter free models instead of Groq, as in the course lab.
